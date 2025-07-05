@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "author": "umesh",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 131.4, "left": -390.8, "attrs": {} },
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": -147,
+      "left": 193.4,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd1",
+      "top": -425.6,
+      "left": 236,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -164.5, "left": 19, "attrs": {} },
+    {
+      "type": "wokwi-a4988",
+      "id": "drv1",
+      "top": -100.6,
+      "left": 533.2,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": -457.19,
+      "left": 682.03,
+      "attrs": { "size": "17", "arrow": "red", "display": "angle" }
+    },
+    {
+      "type": "chip-scope",
+      "id": "scope1",
+      "top": -248.58,
+      "left": 1022.4,
+      "attrs": {
+        "sampleTimeUs": "100",
+        "sampleTimeMs": "0",
+        "triggerChannel": "0",
+        "triggerMode": "1",
+        "crtColor": "0",
+        "trace0Color": "14",
+        "trace1Color": "12",
+        "trace2Color": "10",
+        "trace3Color": "2"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 73.4,
+      "left": 672,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 73.4,
+      "left": 796.8,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -44.6,
+      "left": 709.55,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -15.8,
+      "left": 843.95,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn3",
+      "top": 179,
+      "left": 739.2,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": -120,
+      "left": 911.45,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-slide-switch", "id": "sw3", "top": 234.8, "left": -361.7, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw4", "top": 234.8, "left": -313.7, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw5", "top": 234.8, "left": -265.7, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn6",
+      "top": 204,
+      "left": 19.4,
+      "rotate": 180,
+      "attrs": { "color": "white" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 176.2,
+      "left": 95.15,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "uno:GND.2", "lcd1:GND", "black", [ "h-55.5", "v-374.1" ] ],
+    [ "lcd1:VCC", "uno:5V", "red", [ "h-48", "v336.1" ] ],
+    [ "lcd1:SDA", "uno:A4", "green", [ "h-67.2", "v422" ] ],
+    [ "lcd1:SCL", "uno:A5", "gold", [ "h-76.8", "v422" ] ],
+    [ "pot1:GND", "uno:GND.3", "black", [ "v0" ] ],
+    [ "pot1:VCC", "uno:VIN", "red", [ "v0" ] ],
+    [ "pot1:SIG", "uno:A0", "cyan", [ "v0" ] ],
+    [ "drv1:1B", "stepper1:B-", "green", [ "v-76.75", "h211.68" ] ],
+    [ "stepper1:B+", "drv1:1A", "green", [ "v105.6", "h-192" ] ],
+    [ "stepper1:A+", "drv1:2A", "green", [ "v96", "h-182.4" ] ],
+    [ "drv1:2B", "stepper1:A-", "green", [ "v-105.55", "h192.48" ] ],
+    [ "stepper1:B-", "scope1:D0", "green", [ "v0" ] ],
+    [ "scope1:D1", "stepper1:B+", "green", [ "h0" ] ],
+    [ "stepper1:A+", "scope1:D2", "green", [ "v0" ] ],
+    [ "stepper1:A-", "scope1:D3", "green", [ "v0" ] ],
+    [ "uno:9", "drv1:STEP", "green", [ "h0" ] ],
+    [ "btn1:2.r", "btn2:2.l", "red", [ "h0" ] ],
+    [ "r1:1", "btn1:1.r", "green", [ "h0" ] ],
+    [ "r2:1", "btn2:1.r", "blue", [ "h0", "v67.2" ] ],
+    [ "uno:GND.1", "drv1:GND.1", "black", [ "h88.4", "v-60.9", "h9.6" ] ],
+    [ "drv1:VDD", "uno:3.3V", "red", [ "v-28.75", "h38.88", "v288", "h-480", "v-201.6" ] ],
+    [ "btn3:2.l", "uno:13", "gold", [ "h-86.4", "v0.2", "h-153.6", "v-265.6" ] ],
+    [ "btn3:1.l", "uno:3.3V", "red", [ "h-566.4", "v-163.2" ] ],
+    [ "r4:1", "uno:GND.1", "black", [ "h-489.6", "v76.8", "h-30.8" ] ],
+    [ "r2:2", "r4:1", "black", [ "h0", "v-94.8" ] ],
+    [ "r1:2", "r4:1", "black", [ "h0", "v-75.6" ] ],
+    [ "btn3:2.r", "r4:2", "black", [ "h0" ] ],
+    [ "btn1:2.l", "btn3:1.l", "red", [ "h-28.8", "v67.4", "h96" ] ],
+    [ "uno:3.3V", "bb1:bp.25", "red", [ "h-285.9", "v347.1" ] ],
+    [ "uno:GND.3", "bb1:bn.25", "black", [ "h-257.1", "v336.4", "h-163.2" ] ],
+    [ "bb1:3b.j", "uno:2", "cyan", [ "v105.6", "h806.4", "v-336" ] ],
+    [ "bb1:8b.j", "uno:3", "magenta", [ "v96", "h768", "v-336" ] ],
+    [ "btn1:1.l", "uno:5", "green", [ "h-105.6", "v-57.6" ] ],
+    [ "btn2:1.l", "uno:6", "blue", [ "h-28.8", "v-19.2" ] ],
+    [ "bb1:7b.j", "bb1:bn.5", "black", [ "v38.4", "h-9.6" ] ],
+    [ "bb1:12b.j", "bb1:bn.10", "black", [ "v0" ] ],
+    [ "bb1:9b.j", "bb1:bp.7", "red", [ "v0" ] ],
+    [ "bb1:14b.j", "bb1:bp.11", "red", [ "v0" ] ],
+    [ "bb1:bn.1", "bb1:2b.j", "black", [ "h1.6", "v-39.7" ] ],
+    [ "bb1:4b.j", "bb1:bp.3", "red", [ "v0" ] ],
+    [ "uno:10", "btn6:2.r", "green", [ "h98", "v160.3", "h-220.8" ] ],
+    [ "uno:5V", "btn6:1.l", "red", [ "h-65.1", "v134.6" ] ],
+    [ "uno:GND.3", "r3:2", "black", [ "h-113.1", "v240.4" ] ],
+    [ "btn6:2.l", "r3:1", "green", [ "h28.8", "v-0.2", "h9.6" ] ],
+    [ "uno:7", "drv1:MS1", "orange", [ "h117.2", "v-48" ] ],
+    [ "drv1:MS3", "uno:7", "orange", [ "v0" ] ],
+    [ "drv1:MS2", "uno:7", "orange", [ "v0" ] ],
+    [ "bb1:13b.j", "drv1:DIR", "yellow", [ "v153.6", "h192" ] ],
+    [ "uno:4", "bb1:13b.j", "yellow", [ "h59.6", "v307.5", "h-720" ] ],
+    [ "drv1:SLEEP", "drv1:RESET", "green", [ "v9.8", "h-9.2", "v-9.6" ] ],
+    [ "sw3:1", "bb1:2b.h", "", [ "$bb" ] ],
+    [ "sw3:2", "bb1:3b.h", "", [ "$bb" ] ],
+    [ "sw3:3", "bb1:4b.h", "", [ "$bb" ] ],
+    [ "sw4:1", "bb1:7b.h", "", [ "$bb" ] ],
+    [ "sw4:2", "bb1:8b.h", "", [ "$bb" ] ],
+    [ "sw4:3", "bb1:9b.h", "", [ "$bb" ] ],
+    [ "sw5:1", "bb1:12b.h", "", [ "$bb" ] ],
+    [ "sw5:2", "bb1:13b.h", "", [ "$bb" ] ],
+    [ "sw5:3", "bb1:14b.h", "", [ "$bb" ] ]
+  ],
+  "dependencies": { "chip-scope": "github:Dlloydev/Wokwi-Chip-Scope@1.0.7" }
+}
